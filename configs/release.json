@@ -1,0 +1,77 @@
+{
+  "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+  "namespace": "gsarch",
+  "conditions": {
+    "no-gaze-sft": {
+      "model_id": "gsarch/Qwen3-VL-8B-Gaze-SFT",
+      "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+      "checkpoint": "checkpoint-4912",
+      "prompt_file": "prompts/ggr.txt",
+      "system_prompt_sha256": "f84606ae6e803f84082c6904f389892c8ea596ba4ef84314dd3b66a37d7baf5d",
+      "coordinate_format": "normalized_xy",
+      "max_image_pixels": 10000000,
+      "min_resize_pixels": 2000000,
+      "revision": "bbe0016cfb54529ea28473da076f0039d18437dd"
+    },
+    "ggr-sft": {
+      "model_id": "gsarch/Qwen3-VL-8B-GGR-SFT",
+      "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+      "checkpoint": "checkpoint-4644",
+      "prompt_file": "prompts/ggr.txt",
+      "system_prompt_sha256": "f84606ae6e803f84082c6904f389892c8ea596ba4ef84314dd3b66a37d7baf5d",
+      "coordinate_format": "normalized_xy",
+      "max_image_pixels": 10000000,
+      "min_resize_pixels": 2000000,
+      "revision": "2419df23156b3584f9f5d5fdd1f5e5dd405a3e7a"
+    },
+    "no-gaze-rl": {
+      "model_id": "gsarch/Qwen3-VL-8B-No-Gaze-RL",
+      "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+      "checkpoint": "global_step_400",
+      "prompt_file": "prompts/ggr.txt",
+      "system_prompt_sha256": "f84606ae6e803f84082c6904f389892c8ea596ba4ef84314dd3b66a37d7baf5d",
+      "coordinate_format": "normalized_xy",
+      "max_image_pixels": 10000000,
+      "min_resize_pixels": 2000000,
+      "revision": "acdd71998506a21fc317798afdc0b1a2127c95c7"
+    },
+    "ggr-rl": {
+      "model_id": "gsarch/Qwen3-VL-8B-GGR-RL",
+      "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+      "checkpoint": "global_step_400",
+      "prompt_file": "prompts/ggr.txt",
+      "system_prompt_sha256": "f84606ae6e803f84082c6904f389892c8ea596ba4ef84314dd3b66a37d7baf5d",
+      "coordinate_format": "normalized_xy",
+      "max_image_pixels": 10000000,
+      "min_resize_pixels": 2000000,
+      "revision": "5943cf6b364f23facc1d5d9542426d0c576f0972"
+    }
+  },
+  "datasets": {
+    "human_inputs": {
+      "repo_id": "gsarch/backfill-stage1-human-inputs",
+      "revision": "f87f7416928b048ef76ade6ab22a5705a08e22fd",
+      "train_rows": 6411,
+      "validation_rows": 698
+    },
+    "sft": {
+      "repo_id": "gsarch/Gaze-SFT",
+      "revision": "ebc8bec160e7ef3b3015f7377e348ed267472cdc",
+      "configurations": {
+        "ggr": "GGR-SFT",
+        "no_gaze": "Gaze-SFT"
+      },
+      "rows": {
+        "ggr": 74287,
+        "no_gaze": 78559
+      }
+    },
+    "rl": {
+      "repo_id": "gsarch/GGR-RL-Data"
+    },
+    "sft_validation": {
+      "repo_id": "gsarch/GGR-SFT-Validation",
+      "rows": 100
+    }
+  }
+}

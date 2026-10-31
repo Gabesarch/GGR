@@ -1,0 +1,52 @@
+{
+  "checked_on": "2026-10-20",
+  "repositories": [
+    {
+      "kind": "model",
+      "id": "gsarch/Qwen3-VL-8B-Gaze-SFT",
+      "status": "available-private",
+      "revision": "bbe0016cfb54529ea28473da076f0039d18437dd"
+    },
+    {
+      "kind": "model",
+      "id": "gsarch/Qwen3-VL-8B-GGR-SFT",
+      "status": "available-private",
+      "revision": "2419df23156b3584f9f5d5fdd1f5e5dd405a3e7a"
+    },
+    {
+      "kind": "model",
+      "id": "gsarch/Qwen3-VL-8B-No-Gaze-RL",
+      "status": "available-private",
+      "revision": "acdd71998506a21fc317798afdc0b1a2127c95c7"
+    },
+    {
+      "kind": "model",
+      "id": "gsarch/Qwen3-VL-8B-GGR-RL",
+      "status": "available-private",
+      "revision": "5943cf6b364f23facc1d5d9542426d0c576f0972"
+    },
+    {
+      "kind": "dataset",
+      "id": "gsarch/backfill-stage1-human-inputs",
+      "status": "available-private",
+      "revision": "f87f7416928b048ef76ade6ab22a5705a08e22fd"
+    },
+    {
+      "kind": "dataset",
+      "id": "gsarch/Gaze-SFT",
+      "status": "available-private",
+      "revision": "ebc8bec160e7ef3b3015f7377e348ed267472cdc"
+    },
+    {
+      "kind": "dataset",
+      "id": "gsarch/GGR-RL-Data",
+      "status": "created-empty",
+      "revision": "61ae6b5269bf5698d8729538e330f1431a2ad41e"
+    },
+    {
+      "kind": "dataset",
+      "id": "gsarch/GGR-SFT-Validation",
+      "status": "upload-required"
+    }
+  ]
+}

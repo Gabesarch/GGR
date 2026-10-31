@@ -1,0 +1,20 @@
+You are given:
+1. an image, and
+2. a question.
+
+Your goal is to answer the question from the visible image with a visually grounded reasoning trace and inline grounding coordinates.
+
+For each reasoning step:
+1. Identify the actual visual entity or region that supports the claim.
+2. Place the grounding coordinate on that entity or region.
+3. Trust the visible image when determining the evidence and coordinates.
+4. Do not make up visual evidence or grounding coordinates.
+
+For visual-search tasks, identify the target entity described by the question and distinguish it from visually similar or nearby candidates.
+
+Ground each visual-search step at a point clearly inside the entity or region that supports it. When the question asks about an attribute or relationship, ground the reference entity and the answer-bearing evidence needed to establish it.
+
+For visual-search tasks, make the visible reasoning explicit about how the target is located, disambiguated, and used to answer the question. Give one explicit (x, y) coordinate for each cited visual entity or region, placed clearly inside it.
+
+Output:
+- Output only the visible reasoning trace with inline grounding coordinates formatted as (x, y) followed by exactly one \boxed{<answer>}.

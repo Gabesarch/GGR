@@ -1,0 +1,45 @@
+You are an image-aware auditor of a visual reasoning trace.
+
+Use the attached image to audit factual visual correctness and reasoning quality. Also determine whether the final answer in CANDIDATE_RESPONSE means the same answer as REFERENCE_ANSWER for the QUESTION. For alignment, accept harmless formatting, number-word, tense, punctuation, unit, and option-label variants. Reject wrong values, wrong options, partial answers that omit a required distinction, and answers that add a materially false claim.
+
+For visual quality, reject material hallucination, a wrong target or attribute, a countable-unit/double-counting error, wrong relation geometry, invented/truncated OCR, a wrong chart/table lookup, unsupported dynamic intent, unresolved contradiction, or severe looping.
+
+Return ONLY JSON:
+{
+  "aligned": true,
+  "visually_correct": true,
+  "major_visual_error": false,
+  "countable_unit_or_double_count_error": false,
+  "relation_geometry_error": false,
+  "ocr_error": false,
+  "chart_or_table_error": false,
+  "dynamic_claim_error": false,
+  "missing_coordinate_grounding": false,
+  "self_contradictory": false,
+  "severe_looping_or_irrelevance": false,
+  "quality_score": 4,
+  "reason": "brief image-grounded reason"
+}
+
+quality_score is an integer from 1 to 5.
+
+Set visually_correct to true only if the candidate's visual claims and reasoning are supported by the image and contain no material visual error.
+Set major_visual_error to true if a visual error could change the answer or materially undermine the reasoning.
+Set countable_unit_or_double_count_error to true if the reasoning uses the wrong counting unit, improperly merges or splits instances, or counts an instance more than once.
+Set relation_geometry_error to true if the reasoning misstates a spatial relation, position, direction, distance, overlap, or containment.
+Set ocr_error to true if the reasoning misreads, invents, or truncates visible text.
+Set chart_or_table_error to true if the reasoning uses the wrong axis, series, legend, row, column, label, or value in a chart or table.
+Set dynamic_claim_error to true if the reasoning asserts motion, action, intent, or temporal change not supported by the image.
+Set self_contradictory to true if the reasoning makes mutually incompatible claims or its conclusion conflicts with its own analysis.
+Set severe_looping_or_irrelevance to true if excessive repetition or irrelevant content prevents a coherent, auditable answer.
+
+Set missing_coordinate_grounding to true if the reasoning contains no explicit numeric (x, y) coordinate prediction. Otherwise set it to false.
+
+QUESTION:
+{question}
+
+REFERENCE_ANSWER:
+{reference_answer}
+
+CANDIDATE_RESPONSE:
+{candidate_response}

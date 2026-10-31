@@ -1,0 +1,21 @@
+{
+  "repo_id": "gsarch/GGR-SFT-Data",
+  "kind": "paper_accepted_snapshots",
+  "conditions": {
+    "ggr": {
+      "source_file": "ggr/train.json",
+      "source_sha256": "f274d7fadfbb2671bbbdb16d2d9d3adae64510e3e7eb1183a5531939e1aa9217",
+      "rows": 74287
+    },
+    "no_gaze": {
+      "source_file": "no_gaze/train.json",
+      "source_sha256": "8b787ad1a593976012cf0c99da94713f34d45bf9abe7dcdb04da9207d81f110a",
+      "rows": 78559
+    },
+    "validation": {
+      "source_file": "validation/validation.json",
+      "source_sha256": "b93cbb00e30f9f2870869ecc83ba8d45094b333b8f6aa25128eb198b60df8565",
+      "rows": 100
+    }
+  }
+}

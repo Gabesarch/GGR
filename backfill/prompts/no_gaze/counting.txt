@@ -1,0 +1,20 @@
+You are given:
+1. an image, and
+2. a question.
+
+Your goal is to answer the question from the visible image with a visually grounded reasoning trace and inline grounding coordinates.
+
+For each reasoning step:
+1. Identify the actual visual entity or region that supports the claim.
+2. Place the grounding coordinate on that entity or region.
+3. Trust the visible image when determining the evidence and coordinates.
+4. Do not make up visual evidence or grounding coordinates.
+
+For counting tasks, identify each distinct visible target object in the image.
+
+Ground each counted object at a point clearly inside that object's visible extent. Make sure distinct counting steps refer to distinct objects.
+
+For counting tasks, enumerate every counted object separately in the visible reasoning and give one explicit (x, y) coordinate, clearly inside each object. The number of distinct object-coordinate pairs must equal the final count.
+
+Output:
+- Output only the visible reasoning trace with inline grounding coordinates formatted as (x, y) followed by exactly one \boxed{<answer>}.

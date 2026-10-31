@@ -1,0 +1,10 @@
+# CUDA 12.8 / torch 2.10.0 are installed by scripts/setup_env.sh.
+vllm==0.17.0
+transformers @ git+https://github.com/huggingface/transformers.git@ec66c7fa70bf0194147382ec5e6d5b3ea90f9c3f
+qwen-vl-utils==0.0.14
+math-verify==0.9.0
+datasets==4.5.0
+numpy==2.2.6
+huggingface-hub==1.6.0
+Pillow==12.0.0
+loguru==0.7.3

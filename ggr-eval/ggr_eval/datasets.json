@@ -1,0 +1,38 @@
+{
+  "chartqa_pro": {
+    "repo_id": "ahmed-masry/ChartQAPro",
+    "revision": "e27c2874825874d6767d2bbc538ed4f0dc2c64c2"
+  },
+  "chartqa": {
+    "repo_id": "lmms-lab/ChartQA",
+    "revision": "9e63b7df1592a1c2158e735cc1725454aef0d6d9"
+  },
+  "countbenchqa": {
+    "repo_id": "vikhyatk/CountBenchQA",
+    "revision": "76d600309e9d6147bd3713b4cd431518ac1206c8"
+  },
+  "countqa": {
+    "repo_id": "Jayant-Sravan/CountQA",
+    "revision": "f92cc6fe46542c61e2916e3d2ae9a911e2216b1a"
+  },
+  "mme_realworld_lite": {
+    "repo_id": "yifanzhang114/MME-RealWorld-lite-lmms-eval",
+    "revision": "f6b0dc81ba4d3c39bd9b4e544578198d365ac084"
+  },
+  "visual_probe_easy": {
+    "repo_id": "Mini-o3/VisualProbe_Easy",
+    "revision": "0e665a57946d4473deb9975a13f8ddba973b8026"
+  },
+  "visual_probe_medium": {
+    "repo_id": "Mini-o3/VisualProbe_Medium",
+    "revision": "25d5ff5bce48147be34fd2655617ab17dc55b3fa"
+  },
+  "visual_probe_hard": {
+    "repo_id": "Mini-o3/VisualProbe_Hard",
+    "revision": "bbe9b7a6c41d49844f45e51916ec0a60d1f0e378"
+  },
+  "gaze": {
+    "repo_id": "gsarch/held_out_gaze",
+    "revision": "d02f275bd7bed5da93789606df06d060d82a4599"
+  }
+}

@@ -1,0 +1,173 @@
+defaults:
+- ppo_trainer
+- _self_
+hydra:
+  searchpath:
+  - file://${oc.env:GGR_ROOT}/ggr-rl/verl/trainer/config
+algorithm:
+  adv_estimator: grpo
+  norm_adv_by_std_in_grpo: false
+  use_kl_in_reward: false
+  kl_ctrl:
+    kl_coef: 0
+data:
+  train_files: ${oc.env:GGR_ROOT}/data/rl/train.jsonl
+  val_files: ${oc.env:GGR_ROOT}/data/rl/validation.jsonl
+  filter_overlong_prompts_workers: 64
+  image_root: ${oc.env:GGR_ROOT}/data/rl
+  system_prompt: ${oc.env:GGR_ROOT}/prompts/ggr.txt
+  shuffle: true
+  seed: 2026070402
+  train_batch_size: 256
+  val_batch_size: 512
+  max_prompt_length: 16384
+  max_response_length: 14336
+  min_pixels: 2000000
+  max_pixels: 10000000
+  filter_overlong_prompts: true
+  truncation: error
+  image_key: images
+  prompt_key: prompt
+  add_fixation_post_prompt: false
+  normalize_bbox_to_1000: true
+  return_raw_chat: true
+  per_batch_domain_weights:
+    chart: 1
+    counting: 1
+    search: 1
+actor_rollout_ref:
+  model:
+    path: gsarch/Qwen3-VL-8B-GGR-SFT
+    use_remove_padding: true
+    enable_gradient_checkpointing: true
+    use_fused_kernels: false
+    use_liger: true
+  actor:
+    optim:
+      lr: 2e-5
+      lr_warmup_steps: 20
+      lr_scheduler_type: linear
+      min_lr_ratio: 0.35
+    ppo_mini_batch_size: 128
+    ppo_micro_batch_size_per_gpu: 1
+    ulysses_sequence_parallel_size: 1
+    use_dynamic_bsz: true
+    ppo_max_token_len_per_gpu: 30720
+    loss_agg_mode: seq-mean-token-mean
+    policy_loss:
+      loss_mode: gspo
+    use_kl_loss: false
+    kl_loss_coef: 0.0
+    kl_loss_type: low_var_kl
+    clip_ratio_low: 0.0003
+    clip_ratio_high: 0.0004
+    clip_ratio_c: 10.0
+    entropy_coeff: 0
+    entropy_from_logits_with_chunking: true
+    strategy: fsdp2
+    freeze_vision_tower: false
+    use_torch_compile: false
+    fsdp_config:
+      strategy: fsdp2
+      model_dtype: bfloat16
+      dtype: bfloat16
+      fsdp_size: 8
+      reshard_after_forward: true
+      entropy_checkpointing: false
+      offload_policy: false
+      param_offload: false
+      optimizer_offload: false
+      forward_prefetch: false
+  rollout:
+    name: vllm
+    mode: async
+    lazy_multi_modal_inputs:
+      enabled: true
+      assert_metadata_match: true
+    agent:
+      num_workers: 8
+    tensor_model_parallel_size: 1
+    ignore_eos: false
+    disable_log_stats: false
+    dtype: bfloat16
+    engine_kwargs:
+      vllm:
+        mm_processor_cache_gb: 0
+    gpu_memory_utilization: 0.7
+    enable_prefix_caching: false
+    max_model_len: 32768
+    max_num_batched_tokens: 8192
+    max_num_seqs: 1024
+    enable_chunked_prefill: true
+    enforce_eager: false
+    free_cache_engine: true
+    temperature: 1.0
+    top_p: 1.0
+    top_k: -1
+    n: 8
+    val_kwargs:
+      temperature: 0.7
+      top_p: 1.0
+      top_k: -1
+      do_sample: true
+      n: 1
+    log_prob_use_dynamic_bsz: true
+    log_prob_micro_batch_size_per_gpu: 1
+    log_prob_max_token_len_per_gpu: 30720
+    checkpoint_engine:
+      update_weights_bucket_megabytes: 6144
+  ref:
+    strategy: fsdp2
+    ulysses_sequence_parallel_size: 1
+    log_prob_micro_batch_size_per_gpu: 1
+    log_prob_use_dynamic_bsz: true
+    log_prob_max_token_len_per_gpu: 30720
+    entropy_from_logits_with_chunking: true
+    use_torch_compile: false
+    fsdp_config:
+      strategy: fsdp2
+      model_dtype: bfloat16
+      reshard_after_forward: true
+      offload_policy: false
+      param_offload: false
+reward:
+  reward_manager:
+    name: dapo
+  custom_reward_function:
+    path: ${oc.env:GGR_ROOT}/ggr-rl/verl/utils/reward_score/math_verify_reward_type_fixations_think_nonpoint.py
+    name: async_compute_score_from_data_source
+    reward_kwargs:
+      format_score: 0.05
+      counting_reward_curve: exponential_half
+  reward_kwargs:
+    overlong_buffer_cfg:
+      enable: true
+      len: 2048
+      penalty_factor: 1.0
+      log: false
+    max_resp_len: ${data.max_response_length}
+critic:
+  ulysses_sequence_parallel_size: 1
+  use_dynamic_bsz: true
+  ppo_max_token_len_per_gpu: 30720
+  forward_max_token_len_per_gpu: 30720
+  forward_micro_batch_size_per_gpu: 16
+trainer:
+  critic_warmup: 0
+  logger:
+  - console
+  save_freq: 40
+  test_freq: 40
+  nnodes: 1
+  n_gpus_per_node: 8
+  project_name: GGR
+  total_epochs: 20
+  total_training_steps: 400
+  log_val_generations: 0
+  esi_redundant_time: 1500
+  resume_mode: auto
+  val_before_train: false
+  use_legacy_worker_impl: auto
+  default_local_dir: ${oc.env:GGR_ROOT}/outputs/rl/ggr
+  validation_data_dir: ${trainer.default_local_dir}/validation_data
+  experiment_name: ggr

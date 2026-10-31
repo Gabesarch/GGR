@@ -1,0 +1,179 @@
+[
+  {
+    "source": "lmms_eval/tasks/_task_utils/vllm_judge.py",
+    "source_sha256": "54dee32bcfe0110b8bc858244c298dea7d6414e4bb8d0c3546581745667f3f44",
+    "retained_definitions": [
+      "_resolve_model_path",
+      "JudgeConfig",
+      "_load_config",
+      "VLLMJudgeEngineQwen3",
+      "extract_json_candidate"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/held_out_gaze/utils.py",
+    "source_sha256": "8a4aa7002405d0e0c6f9807e1184650c607e31aff4d77fd4ae2742d060cfd1e0",
+    "retained_definitions": [
+      "_coordinate_format",
+      "_coerce_image",
+      "held_out_gaze_doc_to_visual",
+      "held_out_gaze_doc_to_text",
+      "apply_bounds",
+      "_maybe_parse_literal",
+      "validate_fixations"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/visual_probe/utils.py",
+    "source_sha256": "035ac1fb1f4cb75da170548229e7746c98acdd1423e6ee5b77c6ab2239ee8db0",
+    "retained_definitions": [
+      "_normalize_image_path",
+      "_infer_repo_id",
+      "_open_image",
+      "_download_image",
+      "_coerce_image",
+      "visual_probe_doc_to_visual",
+      "_strip_image_token",
+      "visual_probe_doc_to_text",
+      "_extract_final_answer",
+      "visual_probe_process_results",
+      "_load_judge_prompt",
+      "_format_judge_prompt",
+      "_parse_judge_output",
+      "visual_probe_aggregate_judge_results"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/_task_utils/answer_extraction.py",
+    "source_sha256": "7301e0b2376cb171e9b31e60d35f8d8581e8b50a682ae01039e0330c64dcbfc9",
+    "retained_definitions": [
+      "_extract_last_boxed_content",
+      "_extract_last_square_boxed_content",
+      "_extract_safe_terminal_bracket",
+      "_strip_boxed",
+      "_strip_tex_text_wrapper",
+      "extract_final_answer"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/_task_utils/response_truncation.py",
+    "source_sha256": "bd188a921ff6318b960c6f8b8a8b1a6fe5285bd1e8d1f2ec2c31731e01d7c610",
+    "retained_definitions": [
+      "_hf_local_files_only",
+      "_resolve_hf_model_path",
+      "_get_hf_tokenizer",
+      "truncate_response_tail_tiktoken"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/mme_realworld/utils.py",
+    "source_sha256": "7816d949b544bd33ccb5466907a53a71fed6e6e3d04810d7d8d412e3e2651c2d",
+    "retained_definitions": [
+      "mme_realworld_doc_to_visual",
+      "decode_base64_to_image",
+      "mme_realworld_doc_to_text_cot",
+      "_strip_reasoning_tags",
+      "_normalize_choice_text",
+      "_choice_text_by_letter",
+      "extract_characters_regex",
+      "mme_realworld_process_results",
+      "mme_realworld_aggregate_results"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/countqa/utils.py",
+    "source_sha256": "53925fb5005f8748ade965e8df64a1fb4c00843d780f8c2d797ebc07a531a101",
+    "retained_definitions": [
+      "countqa_process_docs",
+      "_get_first_image",
+      "countqa_doc_to_visual",
+      "countqa_doc_to_text",
+      "_extract_int_from_text",
+      "_question_text",
+      "_get_ground_truth_count",
+      "countqa_cot_process_results"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/_task_utils/count_extraction.py",
+    "source_sha256": "3fa0dc7773d28d68c899b8989dc74485638d9134acfc2de6e6e5bd4b76b59d72",
+    "retained_definitions": [
+      "_number_value",
+      "_numbers_in_text",
+      "_question_terms",
+      "_singularize",
+      "_component_values",
+      "extract_count_candidates",
+      "count_matches",
+      "last_number_word_value"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/countbenchqa/utils.py",
+    "source_sha256": "d6da4c51b91196b150af2e829cab94777fe2ba764f2d80b552506fff9756b1af",
+    "retained_definitions": [
+      "_get_first_image",
+      "countbenchqa_doc_to_visual",
+      "countbenchqa_doc_to_text",
+      "_extract_int_from_text",
+      "_question_text",
+      "_get_ground_truth_count",
+      "countbenchqa_cot_process_results"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/chartqa_pro/utils.py",
+    "source_sha256": "51b9f1f87485f1f9e61322d7bda41205f4c65f4276eefa8ae72db5e5b0dbbf04",
+    "retained_definitions": [
+      "_load_prompt_alt",
+      "chartqa_pro_doc_to_visual",
+      "chartqa_pro_doc_to_text_alt",
+      "chartqa_pro_process_results",
+      "_normalize_text",
+      "_normalize_list_quote_delimiters",
+      "fix_list_format",
+      "parse_to_list",
+      "to_float",
+      "anls_score",
+      "evaluate_single_answer",
+      "_prepare_year_flags",
+      "_as_list",
+      "relaxed_correctness"
+    ]
+  },
+  {
+    "source": "lmms_eval/api/metrics.py",
+    "source_sha256": "045ba0570a807b6f871c0caedd7c10da5ad0b443ade9c9d51dd4b1ec1e45c5be",
+    "retained_definitions": [
+      "levenshtein_distance"
+    ]
+  },
+  {
+    "source": "lmms_eval/tasks/chartqa/utils.py",
+    "source_sha256": "81b799ca6c0c338730f2934e5d21946a7d1df9abcc42f22f9e16aeb986fd46be",
+    "retained_definitions": [
+      "chartqa_doc_to_visual",
+      "chartqa_doc_to_text",
+      "chartqa_process_results",
+      "relaxed_correctness"
+    ]
+  },
+  {
+    "component": "Held-out gaze alignment",
+    "source_sha256": "fbabf098051f59931997ff952c57010a563eeebfe2f50882435b335baa431987",
+    "destination": "ggr_eval/gaze.py",
+    "adaptation": "Retained coordinate parser and fitted density mathematics; removed plotting and condition catalogs."
+  },
+  {
+    "source": "lmms_eval/models/chat/vllm.py",
+    "source_sha256": "40a2fdb7e3b1753c665d78113d869cec66725f2a7b8447c8b6d52142faed932e",
+    "destination": "ggr_eval/generation.py",
+    "adaptation": "Compact image and sampling adapter following the image-only chat request path."
+  },
+  {
+    "source": "lmms_eval/models/simple/vllm.py",
+    "source_sha256": "b981a006079471461f748bab2fb8f8c76289fc795f7d2b138e71cb40a4e35dfd",
+    "destination": "ggr_eval/generation.py",
+    "adaptation": "Actor initialization settings retained for Qwen3-VL; unrelated models and KL calculations omitted."
+  }
+]

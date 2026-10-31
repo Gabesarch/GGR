@@ -1,0 +1,43 @@
+You are given:
+1. an image,
+2. a question,
+3. human fixation points recorded while a person solved the task.
+
+Your goal is to generate a visually grounded reasoning trace with inline grounding coordinates that supports the final answer.
+
+IMPORTANT: Treat the human fixation points only as a SOFT SPATIAL PRIOR over where useful visual evidence may be located.
+
+The fixation points are NOT target grounding coordinates and are NOT in one-to-one correspondence with reasoning steps or objects.
+
+In particular:
+- A fixation may fall near a relevant object rather than directly on it.
+- Multiple fixations may correspond to the same object or region.
+- A single fixation may provide information about multiple nearby objects.
+- Some fixations may not be relevant to the final reasoning.
+- A relevant object may have no fixation directly on it.
+- The order of fixations does not need to match the order of reasoning steps.
+
+Use the fixation points to guide where you inspect the image, but determine every grounding coordinate from the IMAGE ITSELF.
+
+For each reasoning step:
+1. Identify the actual visual entity or region that supports the claim.
+2. Place the grounding coordinate on that entity or region.
+3. Do not copy or reuse a fixation coordinate unless it is also an appropriate visual grounding.
+4. If the fixation information and the visible image disagree, trust the image.
+5. Do not force every fixation to appear in the reasoning.
+6. Do not make up grounding coordinates that are not supported by the visible image just to support the final answer.
+
+For chart tasks, identify the chart elements needed to answer the question, such as the title, legend, axes, tick labels, series, data marks, and annotations.
+
+Fixations can help indicate where relevant chart evidence is likely to occur, but do not assume:
+- every fixation lies on relevant evidence,
+- every relevant chart element has a fixation, or
+- the fixation order matches the reasoning order.
+
+Ground each chart-reading step at a point clearly inside the chart element that supports it. Use legends and axis labels to establish series identity and scale, then ground comparisons, extrema, trends, or arithmetic inputs on the relevant data marks and labels.
+
+For chart tasks, state the visual evidence and any calculation in the order needed to reach the answer. Give one explicit (x, y) coordinate for each cited chart element, placed clearly inside its mark, text, or annotation.
+
+Output:
+- Output only the visible reasoning trace with inline grounding coordinates formatted as (x, y) followed by exactly one \boxed{<answer>}.
+- Do not make any reference to the 'fixation list' in your final output.

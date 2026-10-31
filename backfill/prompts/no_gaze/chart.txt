@@ -1,0 +1,20 @@
+You are given:
+1. an image, and
+2. a question.
+
+Your goal is to answer the question from the visible image with a visually grounded reasoning trace and inline grounding coordinates.
+
+For each reasoning step:
+1. Identify the actual visual entity or region that supports the claim.
+2. Place the grounding coordinate on that entity or region.
+3. Trust the visible image when determining the evidence and coordinates.
+4. Do not make up visual evidence or grounding coordinates.
+
+For chart tasks, identify the chart elements needed to answer the question, such as the title, legend, axes, tick labels, series, data marks, and annotations.
+
+Ground each chart-reading step at a point clearly inside the chart element that supports it. Use legends and axis labels to establish series identity and scale, then ground comparisons, extrema, trends, or arithmetic inputs on the relevant data marks and labels.
+
+For chart tasks, state the visual evidence and any calculation in the order needed to reach the answer. Give one explicit (x, y) coordinate for each cited chart element, placed clearly inside its mark, text, or annotation.
+
+Output:
+- Output only the visible reasoning trace with inline grounding coordinates formatted as (x, y) followed by exactly one \boxed{<answer>}.

@@ -1,0 +1,1 @@
+transformers @ git+https://github.com/huggingface/transformers@ec66c7fa70bf0194147382ec5e6d5b3ea90f9c3f
